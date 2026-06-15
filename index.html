@@ -104,8 +104,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop
 .proj.open .proj-toggle{transform:rotate(45deg);color:var(--blue)}
 .proj-body{display:none;padding:0 0 1.75rem 2.75rem}
 .proj.open .proj-body{display:block}
-.proj-img-wrap{width:100%;height:200px;border-radius:8px;margin:0.25rem 0 1.25rem;background:var(--light);overflow:hidden}
-.proj-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-img-wrap{width:100%;aspect-ratio:16/9;border-radius:8px;margin:0.25rem 0 1.25rem;background:var(--light);overflow:hidden}
+.proj-img-wrap img{width:100%;height:100%;object-fit:contain;display:block;background:var(--light)}
 .proj-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bbb}
 .proj-desc{font-size:14px;line-height:1.75;color:#444;margin-bottom:1rem}
 .proj-points{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
@@ -154,16 +154,65 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;display:flex;justify-
 
 /* RESPONSIVE */
 @media(max-width:700px){
-  .hero{grid-template-columns:1fr;gap:2rem}
-  .hero-photo{width:110px;height:110px;order:-1}
-  .hero-name{font-size:34px}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .about-grid{grid-template-columns:1fr}
-  .exp{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr;gap:2rem}
-  .skills-grid{grid-template-columns:1fr}
-  .edu-grid{grid-template-columns:1fr}
+  /* Nav */
+  .nav-inner{height:52px}
   .nav-links a:not(.nav-cv){display:none}
+  .nav-cv{font-size:11px;padding:5px 10px}
+
+  /* Page padding */
+  .page{padding:0 1.1rem}
+  nav{padding:0 1.1rem}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;gap:1.5rem;padding:2.5rem 0 2.5rem;text-align:center}
+  .hero-photo{width:120px;height:120px;order:-1;margin:0 auto}
+  .hero-name{font-size:32px}
+  .hero-bio{font-size:14px;max-width:100%}
+  .hero-actions{justify-content:center;gap:8px}
+  .btn{font-size:12px;padding:8px 14px}
+
+  /* Stats */
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:1rem 0.9rem}
+  .stat-num{font-size:20px}
+
+  /* Sections */
+  .section{padding:2.5rem 0}
+
+  /* About */
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-heading{font-size:26px}
+
+  /* Projects */
+  .proj-header{grid-template-columns:24px 1fr auto auto;gap:0.6rem;padding:1.1rem 0}
+  .proj-title{font-size:14px}
+  .proj-sub{font-size:12px}
+  .proj-kpi-val{font-size:15px}
+  .proj-body{padding:0 0 1.25rem 0}
+  .proj-points li{font-size:12px}
+  .proj-desc{font-size:13px}
+
+  /* Experience */
+  .exp{grid-template-columns:1fr;gap:0.5rem}
+  .exp-date{font-size:11px;color:#aaa}
+  .exp-role{font-size:14px}
+  .exp-bullets li{font-size:12px}
+
+  /* Education */
+  .edu-grid{grid-template-columns:1fr}
+  .edu-card{padding:1.1rem}
+
+  /* Skills */
+  .skills-grid{grid-template-columns:1fr}
+  .skills-grid div[style]{margin-top:1rem!important}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-heading{font-size:28px}
+  .contact-link{font-size:13px}
+
+  /* Footer */
+  footer{flex-direction:column;gap:4px;text-align:center;padding:1.25rem 0}
 }
 </style>
 </head>
@@ -171,7 +220,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;display:flex;justify-
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-name" href="#">Sri Krishna Kalyan Bandaru</a>
+    <a class="nav-name" href="#">Sri Krishna Kalyan</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Projects</a>
