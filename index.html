@@ -413,11 +413,11 @@ footer{
   <div class="hero-photo-bg" id="heroBg"></div>
   <div class="hero-content">
     <div class="hero-available fade-up">
-      <span class="dot-green"></span>Available · Open to work · Adelaide, AU
+      <span class="dot-green"></span>Available · Adelaide, AU
     </div>
     <h1 class="hero-name fade-up">Sri Krishna<br>Kalyan Bandaru</h1>
     <p class="hero-role fade-up">
-      Five years of progressively harder engineering problems — mechanical systems to embedded AI to full production ML pipelines.<br><br>
+      Built from hardware up — from mechanical systems and embedded AI to full-stack computer vision and autonomous systems in production. I understand the hardware my models run on and the constraints that matter beyond the notebook.<br><br>
       Computer vision · Edge AI · Autonomous systems ·
       Master of AI & ML, University of Adelaide (GPA 6.1) ·
       Master of Mechatronics Engineering, Tor Vergata Rome ·
@@ -460,9 +460,9 @@ footer{
     <div class="section-label fade-up">About</div>
     <div>
       <div class="about-body fade-up">
-        <p>I'm an ML Engineer with a background that runs from mechanical engineering through mechatronics to full-stack AI — That path matters in practice: I understand the hardware my models run on, the systems they integrate with, and the constraints that exist in production.</p>
+        <p>I build ML systems that run on real hardware, integrate with real systems, and get deployed — not just trained. My background runs from mechanical engineering through mechatronics to full-stack AI, and that depth is deliberate: I understand the hardware my models run on, the systems they integrate with, and the constraints that exist in production.</p>
         <p>At the University of Adelaide's Auto-ID Lab I built an autonomous UAV navigation system combining real-time YOLO detection with ROS2 path planning. At Proto Corp I built a production defect segmentation pipeline from scratch — zero labelled data to a live FastAPI service used by non-technical site managers. Earlier, I deployed a neural network to an STM32 microcontroller achieving 97% accuracy at 11 FPS with no cloud dependency.</p>
-        <p>Three degrees across three countries — India, Italy, Australia — each building on the last. Mechanical foundations, then robotics and embedded systems, then AI and machine learning. I'm looking for roles that benefit from someone who can work across the full stack, not just the model layer.</p>
+        <p>I'm looking for roles that benefit from someone who can work across the full stack — not just the model layer. Three degrees across three countries, each building directly on the last: mechanical foundations, then robotics and embedded systems, then AI and machine learning.</p>
       </div>
       <div class="about-cards fade-in">
         <div class="about-card">
@@ -510,11 +510,11 @@ footer{
               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="proj-img-ph" style="display:none">No image · images/proj-stm32.png</div>
           </div>
-          <p class="proj-desc">Deployed a MobileNet-based CNN for food classification directly to an STM32H747I-DISCO microcontroller. Applied model compression and weight quantisation to meet strict flash and RAM constraints — no server, no connectivity required at any point.</p>
+          <p class="proj-desc">Deployed a MobileNet-based CNN for food classification directly to an STM32H747I-DISCO microcontroller. Applied model compression and post-training quantisation to INT8 via X-CUBE-AI to meet strict flash and RAM constraints — no server, no connectivity required.</p>
           <ul class="proj-points">
             <li>97% accuracy across 18 categories — 81ms inference at 11.2 FPS, fully on-device</li>
-            <li>~3× weight compression via STM32CubeMX / X-CUBE-AI to meet MCU flash constraints</li>
-            <li>Validated in real-time with onboard B-CAMS-OMV camera — graded 30/30 Cum Laude</li>
+            <li>Post-training quantisation to INT8 via X-CUBE-AI (~3× weight compression) to meet MCU flash and RAM constraints</li>
+            <li>Validated in real-time with onboard B-CAMS-OMV camera — graded 30 Cum Laude by examining panel</li>
           </ul>
           <div class="proj-footer">
             <div class="proj-tags"><span class="tag">STM32H747I</span><span class="tag">MobileNet CNN</span><span class="tag">X-CUBE-AI</span><span class="tag">TensorFlow Lite</span><span class="tag">Keras</span><span class="tag">C/C++</span><span class="tag">IAR Workbench</span></div>
@@ -542,10 +542,10 @@ footer{
           </div>
           <p class="proj-desc">End-to-end autonomous drone navigation combining EGO-Planner obstacle avoidance with YOLO real-time detection. Built and validated entirely in simulation (ArduPilot SITL + Gazebo) — the system is production-architecture but simulation-validated; real hardware deployment was outside the project scope. All codebase work was done from scratch within the lab's research environment.</p>
           <ul class="proj-points">
-            <li>YOLO architecture evaluation on VisDrone aerial dataset — mAP50 of 0.642 for person and vehicle detection</li>
+            <li>YOLO architecture evaluation on VisDrone aerial dataset — mAP50 of 0.642 for person and vehicle detection (published SOTA ~0.70–0.85; solid result for a research configuration on a challenging small-object benchmark)</li>
             <li>Replaced default feature tracking with SuperPoint — from 5 features/frame to ~2,000</li>
             <li>Migrated entire EGO-Planner obstacle-avoidance codebase from ROS1 to ROS2 with full integration testing</li>
-            <li>Containerised inference stack deployed on NVIDIA Jetson Nano/Orin for edge operation</li>
+            <li>VINS-Fusion VIO integration and parameter tuning for indoor flight stability; containerised inference stack deployed on NVIDIA Jetson Nano/Orin</li>
           </ul>
           <div class="proj-footer">
             <div class="proj-tags"><span class="tag">ROS2</span><span class="tag">YOLOv12s</span><span class="tag">EGO-Planner</span><span class="tag">VINS-Fusion</span><span class="tag">ArduPilot SITL</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span></div>
@@ -574,8 +574,8 @@ footer{
           <p class="proj-desc">Full CV segmentation pipeline for construction defect identification — from unlabelled images to a production system used by non-technical site managers. Comparative model evaluation across four architectures to select the best candidate for deployment.</p>
           <ul class="proj-points">
             <li>Annotated 3,500+ images at pixel-level precision across 5 defect categories using Roboflow</li>
-            <li>Evaluated YOLOv8m-seg, YOLOv9c-seg, YOLOv11m-seg, Mask R-CNN — YOLOv8m-seg selected for production</li>
-            <li>FastAPI inference backend + Streamlit dashboard enabling non-technical stakeholders to run real-time segmentation</li>
+            <li>Evaluated YOLOv8m-seg, YOLOv9c-seg, YOLOv11m-seg, Mask R-CNN — YOLOv8m-seg selected for best mAP/inference-speed tradeoff in production conditions</li>
+            <li>FastAPI inference backend with low-latency CPU inference; Streamlit dashboard enabling non-technical site managers to run segmentation without engineering involvement</li>
             <li>MLOps pipeline: dataset versioning, retraining triggers, and deployment workflows</li>
           </ul>
           <div class="proj-footer">
@@ -671,8 +671,9 @@ footer{
           </div>
           <div class="exp-period">Feb – Aug 2025 · Adelaide, AU</div>
         </div>
+        <p style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px">Built from scratch within the lab — restored a system incompatible with current hardware, enabling ongoing autonomous drone navigation research.</p>
         <ul class="exp-bullets">
-          <li>YOLO architecture evaluation on VisDrone aerial benchmark — achieved mAP50 of 0.642 for real-time person and vehicle detection</li>
+          <li>YOLO architecture evaluation on VisDrone aerial benchmark — mAP50 of 0.642 for real-time person and vehicle detection (published SOTA ~0.70–0.85; solid result for a research configuration)</li>
           <li>Replaced default visual feature tracking with SuperPoint — increased features per frame from 5 to ~2,000, improving navigation stability</li>
           <li>Migrated entire EGO-Planner obstacle-avoidance system from ROS1 to ROS2 — restoring compatibility with current drone hardware</li>
           <li>Containerised and deployed full AI inference stack on NVIDIA Jetson Nano/Orin for edge operation</li>
@@ -686,6 +687,7 @@ footer{
           </div>
           <div class="exp-period">Aug 2024 – Feb 2025 · Remote, AU</div>
         </div>
+        <p style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px">Delivered the client's first automated defect detection capability — replacing a fully manual inspection process with a live system non-technical site managers could use without training.</p>
         <ul class="exp-bullets">
           <li>Annotated 3,500+ construction defect images at pixel level across 5 categories — built training dataset from scratch</li>
           <li>Evaluated four model architectures; selected and deployed YOLOv8m-seg on accuracy and inference speed</li>
@@ -702,6 +704,7 @@ footer{
           </div>
           <div class="exp-period">May 2018 – Sep 2019 · Hyderabad, India</div>
         </div>
+        <p style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:10px">Led a 4-person team maintaining plant systems for UK industrial clients — consistently met SLA targets across high-availability industrial operations.</p>
         <ul class="exp-bullets">
           <li>SAP Plant Maintenance monitoring and incident triage for UK industrial clients — led 4-person team to consistent SLA targets</li>
           <li>Root cause documentation reduced repeat escalations and improved knowledge base quality</li>
@@ -759,7 +762,7 @@ footer{
           </div>
           <div>
             <div class="skill-cat">Deployment & APIs</div>
-            <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">REST APIs</span></div>
+            <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">REST APIs</span></div>
           </div>
           <div>
             <div class="skill-cat">Robotics & Edge AI</div>
@@ -780,7 +783,7 @@ footer{
           </div>
           <div>
             <div class="skill-cat">Cloud & Data</div>
-            <div class="skill-tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">BigQuery</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Tableau</span></div>
+            <div class="skill-tags"><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">BigQuery</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Tableau</span></div>
           </div>
           <div>
             <div class="skill-cat">Other ML</div>
