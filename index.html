@@ -3,626 +3,852 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f0ede8">
 <title>Sri Krishna Kalyan Bandaru — ML Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<meta name="description" content="ML Engineer specialising in computer vision, edge AI and autonomous systems. Adelaide, AU.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23111'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'>SK</text></svg>">
 <style>
-
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#0047FF;--ink:#111;--muted:#666;--light:#f5f5f2;--border:#e8e8e4;--white:#fff;--pad:clamp(1.5rem,5vw,6rem)}
+:root{
+  --black:#111;
+  --grey:#555;
+  --grey-light:#888;
+  --border:#ddd;
+  --bg:#fafaf9;
+  --white:#fff;
+  --accent:#1a56db;
+  --pad:clamp(1.25rem,5vw,5rem);
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --serif:Georgia,'Times New Roman',serif;
+}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);line-height:1.6;overflow-x:hidden}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 var(--pad)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;height:58px}
-.nav-name{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;flex-shrink:0}
-.nav-links{display:flex;gap:clamp(1rem,2vw,2rem);align-items:center}
-.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.15s;white-space:nowrap}
-.nav-links a:hover{color:var(--blue)}
-.nav-cv{font-size:12px;font-weight:500;padding:6px 14px;background:#e8efff;color:var(--blue);border:1px solid #c5d5ff;border-radius:4px;text-decoration:none;transition:all 0.15s}
-.nav-cv:hover{background:#d4e4ff;color:var(--blue)}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+body{
+  font-family:var(--sans);
+  background:var(--white);
+  color:var(--black);
+  line-height:1.6;
+  font-size:15px;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── FADE ── */
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade-up.visible{opacity:1;transform:none}
 .fade-in{opacity:0;transition:opacity 0.7s ease}
 .fade-in.visible{opacity:1}
-[data-stagger] .fade-up:nth-child(1){transition-delay:0s}
-[data-stagger] .fade-up:nth-child(2){transition-delay:0.1s}
-[data-stagger] .fade-up:nth-child(3){transition-delay:0.18s}
-[data-stagger] .fade-up:nth-child(4){transition-delay:0.26s}
-[data-stagger] .fade-up:nth-child(5){transition-delay:0.34s}
-[data-stagger] .fade-up:nth-child(6){transition-delay:0.42s}
-.btn{font-size:13px;font-weight:500;padding:10px 22px;border-radius:5px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all 0.15s;line-height:1}
-.btn-cv{background:#e8efff;color:var(--blue);border:1px solid #c5d5ff}
-.btn-cv:hover{background:#d4e4ff}
-.btn-outline{background:transparent;color:var(--ink);border:1px solid var(--border)}
-.btn-outline:hover{border-color:#999}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stat{background:var(--white);padding:2rem var(--pad)}
-.stat-num{font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--ink)}
-.stat-label{font-size:12px;color:#999;margin-top:4px;line-height:1.5}
-.section{padding:clamp(3rem,6vw,5.5rem) var(--pad);border-top:1px solid var(--border)}
-.section-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:2.5rem}
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}
-.about-heading{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,42px);line-height:1.12;margin-bottom:1.5rem}
-.about-heading em{font-style:italic;color:var(--blue)}
-.about-body{font-size:15px;line-height:1.9;color:#444}
-.about-body p+p{margin-top:1rem}
-.about-right{display:flex;flex-direction:column;gap:1.25rem}
-.about-card{background:var(--light);border-radius:10px;padding:1.5rem}
-.about-card-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#aaa;margin-bottom:8px}
-.about-card-val{font-size:14px;color:var(--ink);line-height:1.65}
-.about-card-val strong{color:var(--blue);font-weight:600}
-.proj{border-top:1px solid var(--border);cursor:pointer}
-.proj:last-child{border-bottom:1px solid var(--border)}
-.proj-header{display:grid;grid-template-columns:3rem 1fr auto auto;gap:1.25rem;align-items:center;padding:1.75rem 0}
-.proj-num{font-size:12px;font-weight:600;color:#ddd;letter-spacing:0.05em}
-.proj-title{font-size:clamp(15px,2vw,17px);font-weight:600;color:var(--ink);margin-bottom:3px}
-.proj-sub{font-size:13px;color:var(--muted)}
-.proj-kpi{text-align:right;min-width:72px}
-.proj-kpi-val{font-size:clamp(16px,2vw,20px);font-weight:600;color:var(--blue)}
-.proj-kpi-lab{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:0.06em}
-.proj-toggle{font-size:22px;color:#ccc;line-height:1;width:24px;text-align:center;transition:transform 0.25s,color 0.2s;user-select:none}
-.proj.open .proj-toggle{transform:rotate(45deg);color:var(--blue)}
-.proj-body{display:none;padding:0 0 2rem 4.25rem}
-.proj.open .proj-body{display:block}
-.proj-img-wrap{width:100%;aspect-ratio:16/9;border-radius:10px;margin:0 0 1.5rem;background:var(--light);overflow:hidden}
-.proj-img-wrap img{width:100%;height:100%;object-fit:contain;display:block;background:var(--light)}
-.proj-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#bbb}
-.proj-desc{font-size:14px;line-height:1.8;color:#444;margin-bottom:1.1rem;max-width:800px}
-.proj-points{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:1.1rem;max-width:800px}
-.proj-points li{font-size:13px;color:#333;padding-left:18px;position:relative;line-height:1.7}
-.proj-points li::before{content:"→";position:absolute;left:0;color:var(--blue)}
-.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-size:11px;font-weight:500;padding:3px 10px;background:var(--light);color:#555;border-radius:3px}
-.exp{display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:2rem 0;border-top:1px solid var(--border)}
-.exp:last-child{border-bottom:1px solid var(--border)}
-.exp-date{font-size:12px;color:#999;line-height:1.6;padding-top:3px}
-.exp-role{font-size:clamp(14px,1.5vw,16px);font-weight:600;color:var(--ink);margin-bottom:2px}
-.exp-org{font-size:13px;color:var(--blue);margin-bottom:10px}
-.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:6px}
-.exp-bullets li{font-size:13px;color:#555;line-height:1.7;padding-left:14px;position:relative}
-.exp-bullets li::before{content:"·";position:absolute;left:0;color:#bbb;font-size:18px;line-height:1.2}
-.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.edu-card{background:var(--white);padding:2rem}
-.edu-year{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
-.edu-degree{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:5px}
-.edu-uni{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.4}
-.edu-grade{font-size:12px;font-weight:600;color:#555;background:var(--light);padding:4px 10px;border-radius:3px;display:inline-block}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-.skill-cat{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#aaa;margin-bottom:10px}
-.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
-.contact-section{background:var(--white);color:var(--ink);padding:clamp(3rem,7vw,6rem) var(--pad);border-top:1px solid var(--border)}
-.contact-section .section-label{color:#aaa}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,8rem);align-items:start}
-.contact-heading{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,52px);line-height:1.05;margin-bottom:12px;color:var(--ink)}
-.contact-heading em{font-style:italic;color:var(--blue)}
-.contact-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:400px}
-.contact-links{display:flex;flex-direction:column;gap:14px;padding-top:4px}
-.contact-link{font-size:14px;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:10px;transition:opacity 0.15s}
-.contact-link:hover{opacity:0.75}
-.contact-link svg{width:16px;height:16px;flex-shrink:0}
-.btn-cv-contact{background:#e8efff;color:var(--blue);border:1px solid #c5d5ff;margin-top:8px;width:fit-content}
-.btn-cv-contact:hover{background:#d4e4ff}
-footer{background:var(--white);border-top:1px solid var(--border);padding:1.5rem var(--pad);display:flex;justify-content:space-between;align-items:center}
-.foot-text{font-size:12px;color:#bbb}
-@media(max-width:900px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .about-grid{grid-template-columns:1fr;gap:2.5rem}
-  .skills-grid{grid-template-columns:repeat(2,1fr)}
-  .exp{grid-template-columns:1fr;gap:0.5rem}
-  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
-  .edu-grid{grid-template-columns:1fr}
-}
-@media(max-width:600px){
-  :root{--pad:1.25rem}
-  .nav-links a:not(.nav-cv){display:none}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .proj-header{grid-template-columns:2rem 1fr auto auto;gap:0.75rem;padding:1.25rem 0}
-  .proj-body{padding:0 0 1.5rem 2.75rem}
-  .skills-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:4px;text-align:center}
-}
-
-
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:92vh}
-.hero-left{background:#f8f8f6;padding:clamp(3rem,8vw,7rem) var(--pad);display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
-.hero-right{background:var(--white);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:3rem}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem}
-.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,64px);line-height:1.02;margin-bottom:1.5rem}
-.hero-name em{font-style:italic;color:var(--blue)}
-.hero-bio{font-size:clamp(14px,1.5vw,16px);line-height:1.85;color:#444;margin-bottom:2rem;max-width:520px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.photo-scene{position:relative;width:clamp(260px,24vw,360px);height:clamp(260px,24vw,360px)}
-.hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;border:4px solid var(--border);display:block;position:relative;z-index:2}
-.ring{position:absolute;inset:-18px;border-radius:50%;border:1.5px dashed #d0d8ff;animation:spin 18s linear infinite;z-index:1}
-.ring2{position:absolute;inset:-36px;border-radius:50%;border:1px dashed #e8ecff;animation:spin 28s linear infinite reverse;z-index:1}
-@keyframes spin{to{transform:rotate(360deg)}}
-.badge{position:absolute;background:#fff;border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:11px;font-weight:600;color:var(--ink);white-space:nowrap;box-shadow:0 2px 12px rgba(0,0,0,0.08);z-index:3;animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.badge-1{top:2%;left:-18%;animation-delay:0s}
-.badge-2{top:20%;right:-22%;animation-delay:0.8s}
-.badge-3{bottom:22%;right:-20%;animation-delay:1.4s}
-.badge-4{bottom:4%;left:-16%;animation-delay:2s}
-.badge-5{top:50%;left:-26%;animation-delay:2.6s}
-.badge-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-right:6px;vertical-align:middle}
-@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left{border-right:none;border-bottom:1px solid var(--border)}.hero-right{padding:3rem var(--pad)}.photo-scene{width:220px;height:220px}}
-@media(max-width:600px){.hero-name{font-size:36px}.photo-scene{width:180px;height:180px}}
-
-
-/* ── HERO ── */
-.hero{
-  min-height:92vh;
-  background:#f0ede8;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  padding:clamp(4rem,8vw,8rem) var(--pad);
-}
-
-/* Photo sits faded on the right */
-.hero-photo-bg{
-  position:absolute;
-  top:0;bottom:0;right:0;
-  width:58%;
-  background-size:cover;
-  background-position:center 8%;
-  background-repeat:no-repeat;
-  filter:grayscale(20%) brightness(1.05);
-  opacity:0.57;
-  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 28%, black 100%);
-  mask-image:linear-gradient(to right, transparent 0%, black 28%, black 100%);
-  transition:opacity 0.4s ease;
-}
-/* Placeholder state — no image loaded */
-.hero-photo-bg.no-photo{
-  opacity:0;
-}
-/* Placeholder shown when no photo */
-.hero-photo-placeholder{
-  position:absolute;
-  top:0;bottom:0;right:0;
-  width:58%;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:12px;
-  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 28%, black 100%);
-  mask-image:linear-gradient(to right, transparent 0%, black 28%, black 100%);
-}
-.hero-photo-bg.no-photo ~ .hero-photo-placeholder{
-  display:flex;
-}
-.placeholder-icon{
-  width:80px;height:80px;border-radius:50%;
-  background:#e0ddd8;
-  display:flex;align-items:center;justify-content:center;
-}
-.placeholder-icon svg{width:40px;height:40px;color:#bbb}
-.placeholder-text{font-size:12px;color:#bbb;text-align:center;line-height:1.6}
-
-/* Foreground content */
-.hero-content{
-  position:relative;z-index:2;
-  max-width:560px;
-}
-
-/* Green open to work badge */
-.hero-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(40,200,64,0.12);
-  border:1px solid rgba(40,200,64,0.35);
-  color:#1a9e30;
-  font-size:11px;font-weight:600;
-  padding:5px 14px;border-radius:20px;
-  letter-spacing:0.06em;
-  margin-bottom:1.5rem;
-}
-.hero-badge-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:#28c840;
-  box-shadow:0 0 6px rgba(40,200,64,0.6);
-}
-
-.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
-.hero-name{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(42px,6vw,76px);
-  line-height:0.97;margin-bottom:1.5rem;letter-spacing:-0.02em;
-  color:#0a0a0a;
-}
-.hero-name em{font-style:italic;color:var(--blue)}
-.hero-bio{font-size:clamp(14px,1.4vw,16px);line-height:1.85;color:#444;margin-bottom:2rem;max-width:460px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.75rem}
-.hero-chips{display:flex;gap:7px;flex-wrap:wrap}
-.chip{
-  font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;
-  background:rgba(255,255,255,0.75);border:1px solid rgba(0,0,0,0.09);
-  color:#333;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-}
-.btn-cv{background:#e8efff;color:var(--blue);border:1px solid #c5d5ff}
-.btn-cv:hover{background:#d4e4ff}
-.btn-outline{background:rgba(255,255,255,0.8);color:var(--ink);border:1px solid rgba(0,0,0,0.12);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.btn-outline:hover{background:#fff}
-
-
-/* ── FULLY FLUID RESPONSIVE — no fixed breakpoints ── */
-
-/* All spacing, type, layout scale continuously with viewport */
-:root{
-  --pad: clamp(1rem, 4vw, 6rem);
-  --pad-v: clamp(2.5rem, 7vh, 8rem);
-  /* fluid type scale */
-  --text-xs:   clamp(9px,  1.8vw,  11px);
-  --text-sm:   clamp(11px, 2vw,    13px);
-  --text-base: clamp(13px, 2.2vw,  15px);
-  --text-lg:   clamp(14px, 2.5vw,  17px);
-  --text-hero: clamp(28px, 7vw,    76px);
-  --text-h2:   clamp(22px, 4.5vw,  42px);
-  --text-stat: clamp(18px, 3.5vw,  32px);
-}
+@media(prefers-reduced-motion:reduce){.fade-up,.fade-in{opacity:1;transform:none;transition:none}}
 
 /* ── NAV ── */
-nav{ padding: 0 var(--pad) }
-.nav-inner{ height: clamp(48px, 7vh, 60px) }
-.nav-name{ font-size: clamp(12px, 2vw, 14px) }
-.nav-links{ gap: clamp(0.6rem, 2vw, 2rem) }
-.nav-links a{ font-size: clamp(11px, 1.6vw, 13px) }
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.97);
+  border-bottom:1px solid var(--border);
+  padding:0 var(--pad);
+}
+.nav-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  height:clamp(52px,6.5vh,60px);
+  max-width:1100px;margin:0 auto;
+}
+.nav-name{
+  font-size:14px;font-weight:600;
+  color:var(--black);text-decoration:none;
+  letter-spacing:-0.01em;
+}
+.nav-links{display:flex;gap:clamp(1rem,2.5vw,2.5rem);align-items:center}
+.nav-links a{
+  font-size:13px;color:var(--grey);
+  text-decoration:none;transition:color 0.12s;
+}
+.nav-links a:hover{color:var(--black)}
 .nav-cv{
-  font-size: clamp(10px, 1.5vw, 12px);
-  padding: clamp(4px,0.8vh,6px) clamp(8px,1.5vw,14px);
+  font-size:12px;font-weight:600;
+  padding:6px 16px;
+  border:1px solid var(--border);
+  background:#f4f4f2;
+  color:var(--black);border-radius:3px;
+  text-decoration:none;transition:all 0.12s;
+  white-space:nowrap;
 }
+.nav-cv:hover{background:#e8e8e4;border-color:#ccc;color:var(--black)}
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:4px;border:none;background:none;
+}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--black);transition:all 0.2s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;
+  top:clamp(52px,6.5vh,60px);left:0;right:0;
+  background:var(--white);z-index:99;
+  padding:1rem var(--pad) 2rem;
+  flex-direction:column;
+  border-bottom:1px solid var(--border);
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-size:15px;color:var(--grey);text-decoration:none;
+  padding:12px 0;border-bottom:1px solid var(--border);
+}
+.mobile-menu a:last-child{border-bottom:none;color:var(--black);font-weight:600}
 
-/* Hide nav links when there's not enough room — fluid */
-@media(max-width: 640px){
-  .nav-links a:not(.nav-cv){ display:none }
-}
+/* ── WRAPPER ── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 var(--pad)}
 
 /* ── HERO ── */
 .hero{
-  min-height: clamp(500px, 92vh, 1000px);
-  padding: var(--pad-v) var(--pad);
+  min-height:clamp(480px,88vh,900px);
+  background:var(--bg);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:clamp(4rem,8vw,8rem) var(--pad);
 }
 .hero-photo-bg{
-  width: clamp(40%, 55%, 65%);
+  position:absolute;top:0;right:0;bottom:0;
+  width:clamp(38%,48%,56%);
+  background-size:cover;background-position:center 8%;
+  filter:grayscale(25%);
+  opacity:0.55;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 20%,black 100%);
+  mask-image:linear-gradient(to right,transparent 0%,black 20%,black 100%);
 }
-.hero-badge{
-  font-size: var(--text-xs);
-  padding: clamp(4px,0.7vh,6px) clamp(10px,2vw,14px);
-  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
+.hero-photo-bg.no-photo{opacity:0}
+.hero-content{position:relative;z-index:2;max-width:560px}
+.hero-available{
+  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--grey-light);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:8px;
 }
-.hero-badge-dot{ width: clamp(5px,1vw,7px); height: clamp(5px,1vw,7px) }
-.hero-eyebrow{
-  font-size: clamp(9px, 1.8vw, 12px);
-  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+.dot-green{
+  width:7px;height:7px;border-radius:50%;
+  background:#22c55e;flex-shrink:0;
+  animation:blink 2.5s ease-in-out infinite;
 }
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.35}}
 .hero-name{
-  font-size: var(--text-hero);
-  margin-bottom: clamp(0.75rem, 2.5vh, 1.5rem);
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,6vw,5rem);
+  font-weight:400;line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--black);
+  margin-bottom:1.5rem;
 }
-.hero-bio{
-  font-size: var(--text-base);
-  margin-bottom: clamp(1rem, 3vh, 2rem);
-  max-width: min(460px, 90vw);
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-role{
+  font-size:clamp(14px,1.6vw,17px);
+  color:var(--grey);line-height:1.7;
+  margin-bottom:2rem;max-width:440px;
 }
-.hero-actions{
-  gap: clamp(6px, 1.5vw, 10px);
-  margin-bottom: clamp(1rem, 2.5vh, 1.75rem);
-}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn{
-  font-size: clamp(11px, 1.8vw, 13px);
-  padding: clamp(7px,1.5vh,10px) clamp(12px,2.5vw,22px);
+  font-size:13px;font-weight:500;
+  padding:10px 22px;border-radius:3px;
+  cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:all 0.15s;line-height:1;
 }
-.hero-chips{ gap: clamp(5px, 1vw, 7px) }
-.chip{
-  font-size: clamp(9px, 1.5vw, 11px);
-  padding: clamp(3px,0.6vh,5px) clamp(8px,1.5vw,12px);
+.btn-filled{background:var(--black);color:var(--white);border:1px solid var(--black)}
+.btn-filled:hover{background:#333}
+.btn-outline{background:transparent;color:var(--black);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--black)}
+
+@media(max-width:800px){
+  .hero-photo-bg{opacity:0.2;width:100%;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 25%,black 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,black 25%,black 100%);
+  }
+  .hero-content{max-width:100%}
 }
 
-/* Portrait phones — photo shifts to background strip */
-@media(max-aspect-ratio: 3/4){
-  .hero{
-    min-height: auto;
-    padding: clamp(2.5rem,8vw,4rem) var(--pad) clamp(2rem,6vw,3rem);
-    align-items: flex-start;
-  }
-  .hero-photo-bg{
-    top: auto; bottom: 0; left: 0; right: 0;
-    width: 100%;
-    height: clamp(160px, 38vh, 280px);
-    opacity: 0.18;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 100%);
-  }
-  .hero-photo-placeholder{
-    top:auto;bottom:0;left:0;right:0;
-    width:100%;height:clamp(160px,38vh,280px);
-  }
-  .hero-content{ max-width: 100% }
-  .hero-bio{ max-width: 100% }
-}
-
-/* Landscape phones — keep side-by-side but tighten */
-@media(max-height: 500px) and (orientation: landscape){
-  .hero{
-    min-height: auto;
-    padding: clamp(1.5rem,4vh,2.5rem) var(--pad);
-  }
-  .hero-name{ font-size: clamp(24px, 6vh, 40px) }
-  .hero-bio{ display: none } /* too cramped, hide on tiny landscape */
-  .hero-photo-bg{ width: 45%; opacity: 0.5 }
-}
+/* ── DIVIDER ── */
+hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 
 /* ── STATS ── */
 .stats{
-  grid-template-columns: repeat(auto-fit, minmax(clamp(120px,20vw,220px), 1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));
+  border-bottom:1px solid var(--border);
 }
-.stat{ padding: clamp(1rem, 3vh, 2rem) var(--pad) }
-.stat-num{ font-size: var(--text-stat) }
-.stat-label{ font-size: clamp(10px, 1.5vw, 12px) }
+.stat{
+  padding:clamp(1.25rem,3vh,2rem) var(--pad);
+  border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-family:var(--serif);
+  font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:400;color:var(--black);
+  letter-spacing:-0.02em;line-height:1;
+  margin-bottom:6px;
+}
+.stat-label{font-size:12px;color:var(--grey-light);line-height:1.5;max-width:180px}
+@media(max-width:640px){
+  .stat{border-right:none;border-bottom:1px solid var(--border)}
+  .stat:last-child{border-bottom:none}
+}
 
-/* ── SECTIONS ── */
-.section{ padding: clamp(2rem, 6vh, 5.5rem) var(--pad) }
-.section-label{ font-size: var(--text-xs) }
+/* ── SECTION ── */
+.section{
+  padding:clamp(3rem,7vh,5.5rem) var(--pad);
+  border-top:1px solid var(--border);
+  max-width:1100px;margin:0 auto;
+}
+.section-row{display:grid;grid-template-columns:200px 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--grey-light);
+  padding-top:4px;
+}
+@media(max-width:700px){.section-row{grid-template-columns:1fr;gap:1.5rem}}
 
 /* ── ABOUT ── */
-.about-grid{
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: clamp(1.5rem, 4vw, 6rem);
-}
-.about-heading{ font-size: var(--text-h2) }
-.about-body{ font-size: var(--text-base) }
-.about-card{ padding: clamp(1rem, 2.5vw, 1.5rem) }
-.about-card-val{ font-size: clamp(12px, 2vw, 14px) }
+.about-body{font-size:15px;line-height:1.9;color:#333}
+.about-body p+p{margin-top:1rem}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.about-card{background:var(--white);padding:1.1rem 1.25rem}
+.about-card-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);margin-bottom:5px}
+.about-card-val{font-size:13px;color:var(--black);line-height:1.6}
+.about-card-val strong{font-weight:600}
+@media(max-width:500px){.about-cards{grid-template-columns:1fr}}
 
 /* ── PROJECTS ── */
+.proj{border-top:1px solid var(--border);cursor:pointer}
+.proj:last-child{border-bottom:1px solid var(--border)}
 .proj-header{
-  grid-template-columns: clamp(20px,3vw,3rem) 1fr auto auto;
-  gap: clamp(0.6rem, 1.5vw, 1.25rem);
-  padding: clamp(1rem, 2.5vh, 1.75rem) 0;
+  display:grid;
+  grid-template-columns:2rem 1fr auto auto;
+  gap:1rem;align-items:center;
+  padding:clamp(1rem,2.5vh,1.5rem) 0;
 }
-.proj-title{ font-size: clamp(13px, 2.2vw, 17px) }
-.proj-sub{ font-size: clamp(11px, 1.8vw, 13px) }
-.proj-kpi-val{ font-size: clamp(14px, 2.5vw, 20px) }
-.proj-body{ padding: 0 0 clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,4.25rem) }
-.proj-desc{ font-size: clamp(12px, 2vw, 14px) }
-.proj-points li{ font-size: clamp(11px, 1.8vw, 13px) }
+.proj-num{font-size:11px;color:var(--grey-light);letter-spacing:0.06em;font-variant-numeric:tabular-nums}
+.proj-title{font-size:clamp(14px,1.8vw,16px);font-weight:600;color:var(--black);margin-bottom:2px}
+.proj-sub{font-size:12px;color:var(--grey-light)}
+.proj-kpi{text-align:right;min-width:56px}
+.proj-kpi-val{font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--accent);line-height:1}
+.proj-kpi-lab{font-size:9px;color:var(--grey-light);text-transform:uppercase;letter-spacing:0.07em;margin-top:2px}
+.proj-toggle{font-size:18px;color:var(--border);width:20px;text-align:center;transition:transform 0.2s,color 0.15s;user-select:none;line-height:1}
+.proj.open .proj-toggle{transform:rotate(45deg);color:var(--accent)}
+.proj-body{display:none;padding:0 0 1.75rem 3rem}
+.proj.open .proj-body{display:block}
+.proj-img-wrap{
+  width:100%;aspect-ratio:16/9;
+  border-radius:4px;margin:0 0 1.25rem;
+  background:var(--bg);overflow:hidden;
+  border:1px solid var(--border);
+}
+.proj-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-img-ph{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--border);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
+}
+.proj-desc{font-size:14px;line-height:1.8;color:#444;margin-bottom:1rem;max-width:700px}
+.proj-points{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:1.1rem;max-width:700px}
+.proj-points li{font-size:13px;color:#444;padding-left:16px;position:relative;line-height:1.7}
+.proj-points li::before{content:"—";position:absolute;left:0;color:var(--grey-light);font-size:11px;top:3px}
+.proj-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{
+  font-size:11px;padding:3px 9px;
+  background:var(--bg);color:var(--grey);
+  border:1px solid var(--border);border-radius:2px;
+}
+.proj-code{
+  font-size:12px;color:var(--grey);text-decoration:none;
+  border:1px solid var(--border);padding:5px 12px;border-radius:2px;
+  transition:all 0.12s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;
+}
+.proj-code:hover{border-color:var(--black);color:var(--black)}
+@media(max-width:600px){
+  .proj-header{grid-template-columns:1.5rem 1fr auto auto;gap:0.6rem}
+  .proj-body{padding:0 0 1.5rem 2rem}
+}
 
 /* ── EXPERIENCE ── */
-.exp{
-  grid-template-columns: clamp(100px, 18vw, 220px) 1fr;
-  gap: clamp(1rem, 3vw, 3rem);
-  padding: clamp(1.25rem, 3vh, 2rem) 0;
-}
-@media(max-aspect-ratio: 1/1){
-  .exp{ grid-template-columns: 1fr }
-}
-.exp-role{ font-size: clamp(13px, 2.2vw, 16px) }
-.exp-date{ font-size: clamp(10px, 1.6vw, 12px) }
-.exp-bullets li{ font-size: clamp(11px, 1.8vw, 13px) }
+.exp+.exp{border-top:1px solid var(--border)}
+.exp{padding:clamp(1.25rem,3vh,1.75rem) 0}
+.exp:first-child{padding-top:0}
+.exp:last-child{padding-bottom:0}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:3px;flex-wrap:wrap}
+.exp-role{font-size:15px;font-weight:600;color:var(--black)}
+.exp-period{font-size:12px;color:var(--grey-light);white-space:nowrap;padding-top:2px}
+.exp-org{font-size:13px;color:var(--grey);margin-bottom:10px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:5px}
+.exp-bullets li{font-size:13px;color:#444;padding-left:16px;position:relative;line-height:1.65}
+.exp-bullets li::before{content:"—";position:absolute;left:0;color:var(--grey-light);font-size:11px;top:3px}
 
 /* ── EDUCATION ── */
 .edu-grid{
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
 }
-.edu-card{ padding: clamp(1rem, 2.5vw, 2rem) }
-.edu-degree{ font-size: clamp(12px, 2vw, 14px) }
-.edu-uni{ font-size: clamp(10px, 1.6vw, 12px) }
+@media(max-width:700px){.edu-grid{grid-template-columns:1fr}}
+.edu-card{background:var(--white);padding:1.5rem 1.25rem}
+.edu-year{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);margin-bottom:8px}
+.edu-degree{font-size:14px;font-weight:600;color:var(--black);line-height:1.35;margin-bottom:4px}
+.edu-uni{font-size:12px;color:var(--grey);margin-bottom:10px;line-height:1.4}
+.edu-grade{font-size:11px;font-weight:600;color:var(--grey);border:1px solid var(--border);padding:3px 9px;border-radius:2px;display:inline-block}
 
 /* ── SKILLS ── */
-.skills-grid{
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-  gap: clamp(1.25rem, 3vw, 2.5rem);
+.skills-tier{margin-bottom:2rem}
+.skills-tier:last-child{margin-bottom:0}
+.skills-tier-label{
+  font-size:10px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--grey-light);
+  margin-bottom:1rem;padding-bottom:0.5rem;
+  border-bottom:1px solid var(--border);
 }
-.skill-cat{ font-size: var(--text-xs) }
-.tag{ font-size: clamp(10px, 1.5vw, 11px) }
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:1.5rem 2.5rem}
+.skill-cat{font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--grey-light);margin-bottom:8px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
 
 /* ── CONTACT ── */
-.contact-grid{
-  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-  gap: clamp(1.5rem, 4vw, 8rem);
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.contact-heading{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:400;line-height:1.1;
+  letter-spacing:-0.02em;margin-bottom:1rem;
 }
-.contact-heading{ font-size: clamp(26px, 5vw, 52px) }
-.contact-sub{ font-size: clamp(13px, 2vw, 15px) }
-.contact-link{ font-size: clamp(12px, 2vw, 14px) }
+.contact-heading em{font-style:italic;color:var(--accent)}
+.contact-sub{font-size:14px;color:var(--grey);line-height:1.75;margin-bottom:1.5rem;max-width:340px}
+.contact-available{
+  font-size:12px;font-weight:600;letter-spacing:0.06em;
+  color:var(--grey-light);display:flex;align-items:center;gap:7px;margin-bottom:1.5rem;
+  text-transform:uppercase;
+}
+.contact-links{display:flex;flex-direction:column;gap:8px}
+.contact-link{
+  font-size:13px;color:var(--black);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+  padding:0.85rem 1.1rem;
+  border:1px solid var(--border);border-radius:3px;
+  transition:border-color 0.12s;
+}
+.contact-link:hover{border-color:var(--black)}
+.contact-link svg{width:15px;height:15px;flex-shrink:0;color:var(--grey-light)}
+.contact-cv-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;padding:11px 22px;
+  background:var(--black);color:var(--white);
+  border-radius:3px;text-decoration:none;
+  transition:background 0.12s;
+}
+.contact-cv-btn:hover{background:#333}
+@media(max-width:700px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
 
 /* ── FOOTER ── */
-footer{ padding: clamp(1rem, 2.5vh, 1.5rem) var(--pad) }
-.foot-text{ font-size: clamp(10px, 1.5vw, 12px) }
-@media(max-aspect-ratio: 1/1){
-  footer{ flex-direction: column; gap: 4px; text-align: center }
+footer{
+  padding:1.5rem var(--pad);
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:8px;
+  max-width:1100px;margin:0 auto;
+}
+.foot-text{font-size:11px;color:var(--grey-light)}
+@media(max-width:600px){footer{justify-content:center;text-align:center}}
+
+/* ── RESPONSIVE NAV ── */
+@media(max-width:780px){
+  .nav-links a:not(.nav-cv){display:none}
+  .nav-hamburger{display:flex}
+  .nav-cv{display:none}
 }
 
-/* ── iOS safe areas ── */
-@supports(padding: max(0px)){
-  nav{
-    padding-left: max(var(--pad), env(safe-area-inset-left));
-    padding-right: max(var(--pad), env(safe-area-inset-right));
+/* ── iOS SAFE AREAS ── */
+@supports(padding:max(0px)){
+  nav,.hero,.section,footer{
+    padding-left:max(var(--pad),env(safe-area-inset-left));
+    padding-right:max(var(--pad),env(safe-area-inset-right));
   }
-  .hero{
-    padding-left: max(var(--pad), env(safe-area-inset-left));
-    padding-right: max(var(--pad), env(safe-area-inset-right));
-    padding-bottom: max(var(--pad-v), env(safe-area-inset-bottom));
-  }
-  footer{
-    padding-left: max(var(--pad), env(safe-area-inset-left));
-    padding-right: max(var(--pad), env(safe-area-inset-right));
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
+  footer{padding-bottom:max(1.5rem,env(safe-area-inset-bottom))}
 }
 </style>
 </head>
 <body>
+
 <nav>
   <div class="nav-inner">
     <a class="nav-name" href="#">Sri Krishna Kalyan Bandaru</a>
     <div class="nav-links">
-      <a href="#about">About</a><a href="#work">Projects</a><a href="#experience">Experience</a>
-      <a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
       <a class="nav-cv" href="SriKrishnaKalyan_Resume.pdf" download>Download CV</a>
     </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#work">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+  <a href="SriKrishnaKalyan_Resume.pdf" download>Download CV</a>
+</div>
+
+<!-- HERO -->
 <header class="hero">
   <div class="hero-photo-bg" id="heroBg"></div>
-  <div class="hero-photo-placeholder">
-    <div class="placeholder-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
-    </div>
-    <span class="placeholder-text">Add images/photo.jpg<br>to show your photo</span>
-  </div>
   <div class="hero-content">
-    <div class="hero-badge fade-up">
-      <span class="hero-badge-dot"></span>Open to work
+    <div class="hero-available fade-up">
+      <span class="dot-green"></span>Available · Open to work · Adelaide, AU
     </div>
-    <div class="hero-eyebrow fade-up">ML Engineer · Adelaide, AU</div>
-    <h1 class="hero-name fade-up">Building ML<br>systems that<br><em>actually ship.</em></h1>
-    <p class="hero-bio fade-up">Computer vision, edge deployment, autonomous systems. Master's in AI/ML from University of Adelaide (GPA 6.1) and Mechatronics from Tor Vergata, Rome. Full working rights (Subclass 485).</p>
+    <h1 class="hero-name fade-up">Sri Krishna<br>Kalyan Bandaru</h1>
+    <p class="hero-role fade-up">
+      ML Engineer specialising in computer vision, edge AI, and autonomous systems.<br><br>
+      Five years of progressively harder engineering problems — mechanical systems to embedded AI to full production ML pipelines.
+      Master of AI & ML, University of Adelaide (GPA 6.1) · Master of Mechatronics Engineering, Tor Vergata Rome.
+      Full working rights (Subclass 485).
+    </p>
     <div class="hero-actions fade-up">
-      <a class="btn btn-cv" href="SriKrishnaKalyan_Resume.pdf" download>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <a class="btn btn-filled" href="SriKrishnaKalyan_Resume.pdf" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download CV
       </a>
       <a class="btn btn-outline" href="#work">View projects</a>
       <a class="btn btn-outline" href="#contact">Get in touch</a>
     </div>
-    <div class="hero-chips fade-up">
-      <span class="chip">Computer Vision</span><span class="chip">ROS2</span>
-      <span class="chip">Edge AI</span><span class="chip">FastAPI</span>
-      <span class="chip">PyTorch</span><span class="chip">Jetson</span>
-    </div>
   </div>
 </header>
+
 <!-- STATS -->
-<div class="stats" data-stagger>
-  <div class="stat fade-up"><div class="stat-num">6.1</div><div class="stat-label">GPA — Master of AI/ML, University of Adelaide</div></div>
-  <div class="stat fade-up"><div class="stat-num">0.642</div><div class="stat-label">mAP50 on VisDrone aerial detection</div></div>
-  <div class="stat fade-up"><div class="stat-num">3.5K+</div><div class="stat-label">Images annotated for production pipeline</div></div>
-  <div class="stat fade-up"><div class="stat-num">97%</div><div class="stat-label">On-device accuracy, STM32 neural net</div></div>
+<div class="stats">
+  <div class="stat fade-up">
+    <div class="stat-num">97%</div>
+    <div class="stat-label">On-device accuracy · Neural net deployed to STM32 microcontroller, no cloud</div>
+  </div>
+  <div class="stat fade-up">
+    <div class="stat-num">0.642</div>
+    <div class="stat-label">mAP50 out of 1.0 · Aerial object detection on VisDrone — a challenging small-object benchmark</div>
+  </div>
+  <div class="stat fade-up">
+    <div class="stat-num">3.5K+</div>
+    <div class="stat-label">Images annotated at pixel level · Enabled first production CV pipeline for client</div>
+  </div>
+  <div class="stat fade-up">
+    <div class="stat-num">6.1</div>
+    <div class="stat-label">GPA out of 7.0 · Master of AI & Machine Learning, University of Adelaide</div>
+  </div>
 </div>
 
 <!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-label fade-up">About</div>
-  <div class="about-grid">
+<div class="section" id="about">
+  <div class="section-row">
+    <div class="section-label fade-up">About</div>
     <div>
-      <h2 class="about-heading fade-up">From hardware<br>to <em>intelligent systems.</em></h2>
       <div class="about-body fade-up">
-        <p>I'm Sri Krishna Kalyan — an ML Engineer whose path started in mechanical engineering, moved through mechatronics and embedded systems, and arrived at full-stack AI and computer vision. That cross-disciplinary background isn't incidental — it means I understand the hardware my models run on, the systems they integrate with, and the engineering constraints that matter in production.</p>
-        <p>At the University of Adelaide's Auto-ID Lab, I worked on autonomous UAV navigation — combining YOLO-based detection with ROS2 planning and VINS-Fusion odometry. Before that, I built and deployed a production defect segmentation pipeline at Proto Corp. Earlier still, I deployed a neural network entirely on a microcontroller — 97% accuracy, no cloud, 11 FPS.</p>
-        <p>Open to ML Engineer, Computer Vision, and Autonomous Systems roles anywhere in Australia.</p>
+        <p>I'm an ML Engineer with a background that runs from mechanical engineering through mechatronics to full-stack AI — That path matters in practice: I understand the hardware my models run on, the systems they integrate with, and the constraints that exist in production.</p>
+        <p>At the University of Adelaide's Auto-ID Lab I built an autonomous UAV navigation system combining real-time YOLO detection with ROS2 path planning. At Proto Corp I built a production defect segmentation pipeline from scratch — zero labelled data to a live FastAPI service used by non-technical site managers. Earlier, I deployed a neural network to an STM32 microcontroller achieving 97% accuracy at 11 FPS with no cloud dependency.</p>
+        <p>Three degrees across three countries — India, Italy, Australia — each building on the last. Mechanical foundations, then robotics and embedded systems, then AI and machine learning. I'm looking for roles that benefit from someone who can work across the full stack, not just the model layer.</p>
+      </div>
+      <div class="about-cards fade-in">
+        <div class="about-card">
+          <div class="about-card-label">Status</div>
+          <div class="about-card-val"><strong>Available now</strong> · Actively interviewing · Full working rights (Subclass 485)</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Location</div>
+          <div class="about-card-val">Adelaide, SA · Open to relocate anywhere in Australia</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Seeking</div>
+          <div class="about-card-val">ML Engineer · Computer Vision · Autonomous Systems · MLOps</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-label">Contact</div>
+          <div class="about-card-val">srikrishnakalyan5@gmail.com · +61 430 037 548</div>
+        </div>
       </div>
     </div>
-    <div class="about-right" data-stagger>
-      <div class="about-card fade-up"><div class="about-card-label">Education</div><div class="about-card-val"><strong>Master of AI & ML</strong> — University of Adelaide, 2025 (GPA 6.1)<br><br><strong>Master of Mechatronics Engineering</strong> — Tor Vergata, Rome (106/110)</div></div>
-      <div class="about-card fade-up"><div class="about-card-label">Location & availability</div><div class="about-card-val">Based in <strong>Adelaide, SA</strong> · Open to relocate anywhere in Australia · Full working rights (Subclass 485)</div></div>
-      <div class="about-card fade-up"><div class="about-card-label">Core focus areas</div><div class="about-card-val">Computer Vision · Edge AI · Autonomous Systems · ROS2 · FastAPI · PyTorch</div></div>
-    </div>
   </div>
-</section>
+</div>
 
 <!-- PROJECTS -->
-<section class="section" id="work">
-  <div class="section-label fade-up">Selected work</div>
-  <div class="proj fade-up" onclick="this.classList.toggle('open')">
-    <div class="proj-header"><span class="proj-num">01</span><div class="proj-info"><div class="proj-title">Autonomous UAV Object Detection</div><div class="proj-sub">Disaster response · ROS2 + YOLO</div></div><div class="proj-kpi"><div class="proj-kpi-val">0.642</div><div class="proj-kpi-lab">mAP50</div></div><span class="proj-toggle">+</span></div>
-    <div class="proj-body"><div class="proj-img-wrap"><img src="images/proj-uav.png" onerror="this.parentElement.innerHTML='<div class=proj-img-placeholder></div>'"></div><p class="proj-desc">End-to-end autonomous drone navigation combining EGO-Planner obstacle avoidance with YOLO real-time detection. Integrated ArduPilot SITL with Gazebo for hardware-in-the-loop validation.</p><ul class="proj-points"><li>Replaced default feature tracking with SuperPoint — 5 → ~2,000 features/frame</li><li>Migrated EGO-Planner ROS1 → ROS2 with full integration testing</li><li>VINS-Fusion VIO; Gazebo indoor simulation for trajectory evaluation</li></ul><div class="proj-tags"><span class="tag">ROS2</span><span class="tag">YOLOv12s</span><span class="tag">EGO-Planner</span><span class="tag">VINS-Fusion</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span></div></div>
-  </div>
-  <div class="proj fade-up" onclick="this.classList.toggle('open')">
-    <div class="proj-header"><span class="proj-num">02</span><div class="proj-info"><div class="proj-title">Construction Defect Segmentation</div><div class="proj-sub">Infrastructure inspection · Production deployed</div></div><div class="proj-kpi"><div class="proj-kpi-val">3.5K</div><div class="proj-kpi-lab">images</div></div><span class="proj-toggle">+</span></div>
-    <div class="proj-body"><div class="proj-img-wrap"><img src="images/proj-defect.png" onerror="this.parentElement.innerHTML='<div class=proj-img-placeholder></div>'"></div><p class="proj-desc">Full CV segmentation pipeline for construction defect identification. Comparative evaluation across YOLO variants and Mask R-CNN with production FastAPI deployment.</p><ul class="proj-points"><li>3,500+ images annotated at pixel-level across 5 defect categories</li><li>Evaluated 4 architectures — YOLOv8m-seg selected for production</li><li>FastAPI REST endpoints + Streamlit dashboard for stakeholders</li></ul><div class="proj-tags"><span class="tag">YOLOv8m-seg</span><span class="tag">Detectron2</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">PyTorch</span></div></div>
-  </div>
-  <div class="proj fade-up" onclick="this.classList.toggle('open')">
-    <div class="proj-header"><span class="proj-num">03</span><div class="proj-info"><div class="proj-title">Embedded Neural Network on STM32</div><div class="proj-sub">On-device inference · No cloud dependency</div></div><div class="proj-kpi"><div class="proj-kpi-val">97%</div><div class="proj-kpi-lab">accuracy</div></div><span class="proj-toggle">+</span></div>
-    <div class="proj-body"><div class="proj-img-wrap"><img src="images/proj-stm32.png" onerror="this.parentElement.innerHTML='<div class=proj-img-placeholder></div>'"></div><p class="proj-desc">Deep learning food classification deployed directly to STM32H747I-DISCO. Model compression and weight quantisation to fit hardware memory constraints.</p><ul class="proj-points"><li>97% accuracy across 18 categories — 81ms inference at 11.2 FPS, fully on-device</li><li>~3× weight compression via X-CUBE-AI to meet MCU flash limits</li><li>Validated with onboard B-CAMS-OMV camera — graded 30/30</li></ul><div class="proj-tags"><span class="tag">STM32H747I</span><span class="tag">X-CUBE-AI</span><span class="tag">Keras</span><span class="tag">C/C++</span></div></div>
-  </div>
-  <div class="proj fade-up" onclick="this.classList.toggle('open')">
-    <div class="proj-header"><span class="proj-num">04</span><div class="proj-info"><div class="proj-title">Alzheimer's Progression from MEG Signals</div><div class="proj-sub">Neurological classification · AUC 0.74</div></div><div class="proj-kpi"><div class="proj-kpi-val">81%</div><div class="proj-kpi-lab">accuracy</div></div><span class="proj-toggle">+</span></div>
-    <div class="proj-body"><div class="proj-img-wrap"><img src="images/proj-alz.png" onerror="this.parentElement.innerHTML='<div class=proj-img-placeholder></div>'"></div><p class="proj-desc">Pipeline predicting Alzheimer's progression from MEG time-series. Transfer learning with leave-one-patient-out cross-validation.</p><ul class="proj-points"><li>81% accuracy, AUC 0.74 for early-stage detection</li><li>MEG signals converted to 2D representations for classification</li><li>AlexNet vs ResNet vs GoogLeNet comparative evaluation</li></ul><div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">AlexNet</span><span class="tag">ResNet</span><span class="tag">SVM</span><span class="tag">Scikit-learn</span></div></div>
-  </div>
-  <div class="proj fade-up" onclick="this.classList.toggle('open')">
-    <div class="proj-header"><span class="proj-num">05</span><div class="proj-info"><div class="proj-title">Emotion-Responsive Robot Car — Edge-Cloud CV</div><div class="proj-sub">IoT · Arduino · Real-time facial expression detection</div></div><div class="proj-kpi"><div class="proj-kpi-val">62%</div><div class="proj-kpi-lab">accuracy</div></div><span class="proj-toggle">+</span></div>
-    <div class="proj-body"><div class="proj-img-wrap"><img src="images/proj-emotion-robot.png" onerror="this.parentElement.innerHTML='<div class=proj-img-placeholder></div>'"></div><p class="proj-desc">Physically built 4-wheeled Arduino robot with facial expression-driven interaction. Independently architected an edge-cloud split to overcome Arduino compute constraints.</p><ul class="proj-points"><li>PC runs CNN inference, encodes emotion, transmits to Arduino over Bluetooth HC-06</li><li>4.47M param CNN on FER-2013 — 62% vs 14.3% random baseline</li><li>Motion sequences + speech synthesis per detected emotion — graded 30/30</li></ul><div class="proj-tags"><span class="tag">Arduino C++</span><span class="tag">TensorFlow/Keras</span><span class="tag">OpenCV</span><span class="tag">FER-2013</span><span class="tag">Bluetooth HC-06</span><span class="tag">pyttsx3</span></div></div>
-  </div>
-</section>
+<div class="section" id="work">
+  <div class="section-row">
+    <div class="section-label fade-up">Selected work</div>
+    <div>
+      <p class="fade-up" style="font-size:13px;color:var(--grey-light);margin-bottom:1.75rem">All projects were built, tested, and delivered. Code available on request.</p>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="section-label fade-up">Experience</div>
-  <div class="exp fade-up"><div class="exp-date">Feb 2025 – Aug 2025<br>Adelaide, Australia</div><div><div class="exp-role">Research Assistant — Autonomous Systems & CV</div><div class="exp-org">Auto-ID Lab, University of Adelaide</div><ul class="exp-bullets"><li>YOLO evaluation on VisDrone — mAP50 0.642 for aerial detection</li><li>SuperPoint integration: 5 → ~2,000 visual features per frame</li><li>Jetson Nano/Orin containerised deployment; EGO-Planner ROS1 → ROS2 migration</li></ul></div></div>
-  <div class="exp fade-up"><div class="exp-date">Aug 2024 – Feb 2025<br>Remote, Australia</div><div><div class="exp-role">ML Engineer Intern — Computer Vision & MLOps</div><div class="exp-org">Proto Corp Pvt Ltd</div><ul class="exp-bullets"><li>3,500+ defect images annotated; model evaluation to production deployment</li><li>FastAPI inference service + Streamlit app for non-technical stakeholders</li><li>Continuous dataset versioning and retraining workflows via Roboflow</li></ul></div></div>
-  <div class="exp fade-up"><div class="exp-date">May 2018 – Sep 2019<br>India</div><div><div class="exp-role">Project Engineer — IT Operations & SAP PM</div><div class="exp-org">Wipro Technologies</div><ul class="exp-bullets"><li>SAP PM for UK industrial clients; led 4-person team to SLA targets</li><li>Root cause documentation reducing repeated escalations</li></ul></div></div>
-</section>
+      <!-- 01 STM32 — opens by default, strongest story -->
+      <div class="proj open fade-up" onclick="this.classList.toggle('open')">
+        <div class="proj-header">
+          <span class="proj-num">01</span>
+          <div>
+            <div class="proj-title">Embedded Neural Network on STM32</div>
+            <div class="proj-sub">On-device inference · No cloud · Deployed to microcontroller</div>
+          </div>
+          <div class="proj-kpi"><div class="proj-kpi-val">97%</div><div class="proj-kpi-lab">accuracy</div></div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-img-wrap">
+            <img src="images/proj-stm32.png" alt="STM32 Neural Network"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proj-img-ph" style="display:none">No image · images/proj-stm32.png</div>
+          </div>
+          <p class="proj-desc">Deployed a deep learning food classification model directly to an STM32H747I-DISCO microcontroller. Applied model compression and weight quantisation to meet strict hardware memory limits — no server, no connectivity required.</p>
+          <ul class="proj-points">
+            <li>97% accuracy across 18 categories — 81ms inference at 11.2 FPS, fully on-device</li>
+            <li>~3× weight compression via STM32CubeMX / X-CUBE-AI to meet MCU flash constraints</li>
+            <li>Validated in real-time with onboard B-CAMS-OMV camera — graded 30/30 Cum Laude</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="proj-tags"><span class="tag">STM32H747I</span><span class="tag">X-CUBE-AI</span><span class="tag">TensorFlow Lite</span><span class="tag">Keras</span><span class="tag">C/C++</span><span class="tag">IAR Workbench</span></div>
+            <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20STM32%20Neural%20Network">Request code</a>
+          </div>
+        </div>
+      </div>
 
-<!-- EDUCATION -->
-<section class="section" id="education">
-  <div class="section-label fade-up">Education</div>
-  <div class="edu-grid fade-in">
-    <div class="edu-card"><div class="edu-year">2023 – 2025</div><div class="edu-degree">Master of Artificial Intelligence & Machine Learning</div><div class="edu-uni">University of Adelaide, Australia</div><span class="edu-grade">GPA 6.1</span></div>
-    <div class="edu-card"><div class="edu-year">2020 – 2022</div><div class="edu-degree">Master of Mechatronics Engineering</div><div class="edu-uni">Tor Vergata University of Rome, Italy</div><span class="edu-grade">106/110</span></div>
-    <div class="edu-card"><div class="edu-year">2014 – 2018</div><div class="edu-degree">Bachelor of Technology in Mechanical Engineering</div><div class="edu-uni">KL University, India</div><span class="edu-grade">First Class with Distinction</span></div>
-  </div>
-</section>
+      <!-- 02 UAV -->
+      <div class="proj fade-up" onclick="this.classList.toggle('open')">
+        <div class="proj-header">
+          <span class="proj-num">02</span>
+          <div>
+            <div class="proj-title">Autonomous UAV Object Detection</div>
+            <div class="proj-sub">Drone navigation · Real-time detection · ROS2 · VisDrone benchmark</div>
+          </div>
+          <div class="proj-kpi"><div class="proj-kpi-val">0.642</div><div class="proj-kpi-lab">mAP50</div></div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-img-wrap">
+            <img src="images/proj-uav.png" alt="UAV Detection"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proj-img-ph" style="display:none">No image · images/proj-uav.png</div>
+          </div>
+          <p class="proj-desc">End-to-end autonomous drone navigation combining EGO-Planner obstacle avoidance with YOLO real-time detection. Built and validated in simulation using ArduPilot SITL and Gazebo before deployment on NVIDIA Jetson hardware.</p>
+          <ul class="proj-points">
+            <li>YOLO architecture evaluation on VisDrone aerial dataset — mAP50 of 0.642 for person and vehicle detection</li>
+            <li>Replaced default feature tracking with SuperPoint — from 5 features/frame to ~2,000</li>
+            <li>Migrated entire EGO-Planner obstacle-avoidance codebase from ROS1 to ROS2 with full integration testing</li>
+            <li>Containerised inference stack deployed on NVIDIA Jetson Nano/Orin for edge operation</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="proj-tags"><span class="tag">ROS2</span><span class="tag">YOLOv12s</span><span class="tag">EGO-Planner</span><span class="tag">VINS-Fusion</span><span class="tag">ArduPilot SITL</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span></div>
+            <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20UAV%20Detection">Request code</a>
+          </div>
+        </div>
+      </div>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="section-label fade-up">Technical stack</div>
-  <div class="skills-grid">
-    <div class="fade-up"><div class="skill-cat">Computer Vision</div><div class="skill-tags"><span class="tag">YOLO v5–v12</span><span class="tag">Detectron2</span><span class="tag">Mask R-CNN</span><span class="tag">OpenCV</span><span class="tag">Roboflow</span></div></div>
-    <div class="fade-up"><div class="skill-cat">ML Frameworks</div><div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow/Keras</span><span class="tag">Scikit-learn</span><span class="tag">Hugging Face</span><span class="tag">BERT</span></div></div>
-    <div class="fade-up"><div class="skill-cat">Deployment & APIs</div><div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">CI/CD</span></div></div>
-    <div class="fade-up"><div class="skill-cat">Robotics & Edge AI</div><div class="skill-tags"><span class="tag">ROS2 (Humble)</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span><span class="tag">STM32</span><span class="tag">ArduPilot SITL</span></div></div>
-    <div class="fade-up"><div class="skill-cat">Languages</div><div class="skill-tags"><span class="tag">Python</span><span class="tag">C/C++</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">MATLAB</span></div></div>
-    <div class="fade-up"><div class="skill-cat">Data & Visualisation</div><div class="skill-tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Tableau</span><span class="tag">BigQuery</span></div></div>
-  </div>
-</section>
+      <!-- 03 Defect -->
+      <div class="proj fade-up" onclick="this.classList.toggle('open')">
+        <div class="proj-header">
+          <span class="proj-num">03</span>
+          <div>
+            <div class="proj-title">Construction Defect Segmentation</div>
+            <div class="proj-sub">Production deployed · Client-facing · Zero-to-pipeline</div>
+          </div>
+          <div class="proj-kpi"><div class="proj-kpi-val">3.5K</div><div class="proj-kpi-lab">annotated</div></div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-img-wrap">
+            <img src="images/proj-defect.png" alt="Defect Segmentation"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proj-img-ph" style="display:none">No image · images/proj-defect.png</div>
+          </div>
+          <p class="proj-desc">Full CV segmentation pipeline for construction defect identification — from unlabelled images to a production system used by non-technical site managers. Comparative model evaluation across four architectures to select the best candidate for deployment.</p>
+          <ul class="proj-points">
+            <li>Annotated 3,500+ images at pixel-level precision across 5 defect categories using Roboflow</li>
+            <li>Evaluated YOLOv8m-seg, YOLOv9c-seg, YOLOv11m-seg, Mask R-CNN — YOLOv8m-seg selected for production</li>
+            <li>FastAPI inference backend + Streamlit dashboard enabling non-technical stakeholders to run real-time segmentation</li>
+            <li>MLOps pipeline: dataset versioning, retraining triggers, and deployment workflows</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="proj-tags"><span class="tag">YOLOv8m-seg</span><span class="tag">Detectron2</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span><span class="tag">Roboflow</span><span class="tag">PyTorch</span></div>
+            <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20Defect%20Segmentation">Request code</a>
+          </div>
+        </div>
+      </div>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="section-label fade-up">Contact</div>
-  <div class="contact-grid">
-    <div class="fade-up"><h2 class="contact-heading">Let's <em>talk.</em></h2><p class="contact-sub">Open to ML Engineer, Computer Vision, and Autonomous Systems roles anywhere in Australia. Full working rights (Subclass 485).</p></div>
-    <div class="contact-links fade-up">
-      <a class="contact-link" href="mailto:srikrishnakalyan5@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>srikrishnakalyan5@gmail.com</a>
-      <a class="contact-link" href="https://linkedin.com/in/sri-krishna-kalyan-bandaru-766bb112a" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-      <a class="contact-link" href="https://github.com/SriKrishnaKalyan" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
-      <a class="btn btn-cv btn-cv-contact" href="SriKrishnaKalyan_Resume.pdf" download><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download CV</a>
+      <!-- 04 Alzheimer's -->
+      <div class="proj fade-up" onclick="this.classList.toggle('open')">
+        <div class="proj-header">
+          <span class="proj-num">04</span>
+          <div>
+            <div class="proj-title">Alzheimer's Progression from MEG Signals</div>
+            <div class="proj-sub">Medical AI · Neurological classification · AUC 0.74</div>
+          </div>
+          <div class="proj-kpi"><div class="proj-kpi-val">81%</div><div class="proj-kpi-lab">accuracy</div></div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-img-wrap">
+            <img src="images/proj-alz.png" alt="Alzheimer MEG"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proj-img-ph" style="display:none">No image · images/proj-alz.png</div>
+          </div>
+          <p class="proj-desc">End-to-end pipeline predicting Alzheimer's progression from multi-channel MEG time-series data. Transfer learning benchmarked across three architectures with leave-one-patient-out cross-validation to prevent data leakage.</p>
+          <ul class="proj-points">
+            <li>81% accuracy, AUC 0.74 for early-stage detection — baseline (random) is ~50%</li>
+            <li>MEG time-series converted to frequency-domain spectrograms for CNN input</li>
+            <li>AlexNet vs ResNet18 vs GoogLeNet — ResNet18 achieved best performance</li>
+            <li>LOOCV cross-validation ensures no patient-level leakage across train/test</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">AlexNet</span><span class="tag">ResNet18</span><span class="tag">GoogLeNet</span><span class="tag">SVM</span><span class="tag">Scikit-learn</span><span class="tag">LOOCV</span></div>
+            <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20Alzheimer%27s%20MEG">Request code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Emotion Robot -->
+      <div class="proj fade-up" onclick="this.classList.toggle('open')">
+        <div class="proj-header">
+          <span class="proj-num">05</span>
+          <div>
+            <div class="proj-title">Emotion-Responsive Robot Car</div>
+            <div class="proj-sub">Physical hardware build · Edge-cloud architecture · Arduino + CNN</div>
+          </div>
+          <div class="proj-kpi"><div class="proj-kpi-val">30/30</div><div class="proj-kpi-lab">grade</div></div>
+          <span class="proj-toggle">+</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-img-wrap">
+            <img src="images/proj-emotion-robot.png" alt="Emotion Robot"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proj-img-ph" style="display:none">No image · images/proj-emotion-robot.png</div>
+          </div>
+          <p class="proj-desc">Physically built a 4-wheeled Arduino robot with real-time facial expression detection. Designed and implemented an edge-cloud split architecture to solve a hard constraint: the Arduino lacks the compute for deep learning inference.</p>
+          <ul class="proj-points">
+            <li>Edge-cloud split: CNN (4.47M params) runs on PC, transmits detected emotion over Bluetooth HC-06 to Arduino at 9600 baud</li>
+            <li>CNN trained on FER-2013 (28,709 images, 7 emotion classes) — 62% accuracy vs 14.3% random baseline</li>
+            <li>Haar Cascade face detection via OpenCV; motion sequences and speech synthesis per emotion class</li>
+            <li>Custom PCB layout, L298N dual H-bridge motor driver — graded 30/30 Cum Laude by examining panel</li>
+          </ul>
+          <div class="proj-footer">
+            <div class="proj-tags"><span class="tag">Arduino C++</span><span class="tag">TensorFlow/Keras</span><span class="tag">OpenCV</span><span class="tag">FER-2013</span><span class="tag">Bluetooth HC-06</span><span class="tag">PCB Design</span><span class="tag">pyttsx3</span></div>
+            <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20Emotion%20Robot">Request code</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
-<footer><span class="foot-text">Sri Krishna Kalyan Bandaru · Adelaide, SA</span><span class="foot-text">© 2025</span></footer>
+</div>
 
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="section-row">
+    <div class="section-label fade-up">Experience</div>
+    <div>
+      <div class="exp fade-up">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Research Assistant — Autonomous Systems & Computer Vision</div>
+            <div class="exp-org">Auto-ID Lab, University of Adelaide</div>
+          </div>
+          <div class="exp-period">Feb – Aug 2025 · Adelaide, AU</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>YOLO architecture evaluation on VisDrone aerial benchmark — achieved mAP50 of 0.642 for real-time person and vehicle detection</li>
+          <li>Replaced default visual feature tracking with SuperPoint — increased features per frame from 5 to ~2,000, improving navigation stability</li>
+          <li>Migrated entire EGO-Planner obstacle-avoidance system from ROS1 to ROS2 — restoring compatibility with current drone hardware</li>
+          <li>Containerised and deployed full AI inference stack on NVIDIA Jetson Nano/Orin for edge operation</li>
+        </ul>
+      </div>
+      <div class="exp fade-up">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">ML Engineer Intern — Computer Vision & MLOps</div>
+            <div class="exp-org">Proto Corp Pvt Ltd</div>
+          </div>
+          <div class="exp-period">Aug 2024 – Feb 2025 · Remote, AU</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Annotated 3,500+ construction defect images at pixel level across 5 categories — built training dataset from scratch</li>
+          <li>Evaluated four model architectures; selected and deployed YOLOv8m-seg on accuracy and inference speed</li>
+          <li>Built FastAPI inference backend and Streamlit dashboard used by non-technical site managers</li>
+          <li>Established MLOps pipeline — dataset versioning, retraining triggers, and deployment workflows via Roboflow</li>
+          <li>Presented model selection rationale and pipeline architecture to non-technical client stakeholders</li>
+        </ul>
+      </div>
+      <div class="exp fade-up">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Project Engineer — IT Operations & SAP PM</div>
+            <div class="exp-org">Wipro Technologies</div>
+          </div>
+          <div class="exp-period">May 2018 – Sep 2019 · Hyderabad, India</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>SAP Plant Maintenance monitoring and incident triage for UK industrial clients — led 4-person team to consistent SLA targets</li>
+          <li>Root cause documentation reduced repeat escalations and improved knowledge base quality</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- EDUCATION -->
+<div class="section" id="education">
+  <div class="section-row">
+    <div class="section-label fade-up">Education</div>
+    <div>
+      <p class="fade-up" style="font-size:13px;color:var(--grey-light);margin-bottom:1.5rem">Three degrees across three countries — each building directly on the last.</p>
+      <div class="edu-grid fade-in">
+        <div class="edu-card">
+          <div class="edu-year">2023 – 2025 · Australia</div>
+          <div class="edu-degree">Master of Artificial Intelligence & Machine Learning</div>
+          <div class="edu-uni">University of Adelaide</div>
+          <span class="edu-grade">GPA 6.1 / 7.0</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">2020 – 2022 · Italy</div>
+          <div class="edu-degree">Master of Mechatronics Engineering</div>
+          <div class="edu-uni">Tor Vergata University of Rome</div>
+          <span class="edu-grade">106 / 110</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">2014 – 2018 · India</div>
+          <div class="edu-degree">Bachelor of Technology — Mechanical Engineering</div>
+          <div class="edu-uni">KL University</div>
+          <span class="edu-grade">First Class with Distinction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-row">
+    <div class="section-label fade-up">Technical stack</div>
+    <div>
+      <div class="skills-tier fade-up">
+        <div class="skills-tier-label">Proficient — use regularly</div>
+        <div class="skill-groups">
+          <div>
+            <div class="skill-cat">Computer Vision</div>
+            <div class="skill-tags"><span class="tag">YOLO v5–v12</span><span class="tag">Detectron2</span><span class="tag">Mask R-CNN</span><span class="tag">OpenCV</span><span class="tag">Instance Segmentation</span><span class="tag">Roboflow</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">ML & Deep Learning</div>
+            <div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow / Keras</span><span class="tag">Scikit-learn</span><span class="tag">Transfer Learning</span><span class="tag">Model Quantisation</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">Deployment & APIs</div>
+            <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">REST APIs</span><span class="tag">CI/CD</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">Robotics & Edge AI</div>
+            <div class="skill-tags"><span class="tag">ROS2 (Humble)</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span><span class="tag">STM32</span><span class="tag">ArduPilot SITL</span><span class="tag">MAVROS</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="skills-tier fade-up">
+        <div class="skills-tier-label">Familiar — worked with, can ramp quickly</div>
+        <div class="skill-groups">
+          <div>
+            <div class="skill-cat">Languages</div>
+            <div class="skill-tags"><span class="tag">Python</span><span class="tag">C / C++</span><span class="tag">SQL</span><span class="tag">MATLAB</span><span class="tag">Java</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">Cloud & Data</div>
+            <div class="skill-tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">BigQuery</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Tableau</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">Other ML</div>
+            <div class="skill-tags"><span class="tag">Hugging Face</span><span class="tag">BERT / NLP</span><span class="tag">MLOps</span><span class="tag">Ultralytics</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="section-row">
+    <div class="section-label fade-up">Contact</div>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="contact-available">
+          <span class="dot-green"></span>Available now · Actively interviewing
+        </div>
+        <h2 class="contact-heading">Get in <em>touch.</em></h2>
+        <p class="contact-sub">Open to ML Engineer, Computer Vision, and Autonomous Systems roles anywhere in Australia. Full working rights (Subclass 485) — available to relocate.</p>
+        <a class="contact-cv-btn" href="SriKrishnaKalyan_Resume.pdf" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+      </div>
+      <div class="contact-links fade-up">
+        <a class="contact-link" href="mailto:srikrishnakalyan5@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          srikrishnakalyan5@gmail.com
+        </a>
+        <a class="contact-link" href="tel:+61430037548">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +61 430 037 548
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/sri-krishna-kalyan-bandaru-766bb112a" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/sri-krishna-kalyan-bandaru
+        </a>
+        <a class="contact-link" href="https://github.com/SriKrishnaKalyan" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          github.com/SriKrishnaKalyan
+        </a>
+        <a class="contact-link" href="https://srikrishnakalyan.github.io" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          srikrishnakalyan.github.io
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-text">Sri Krishna Kalyan Bandaru</span>
+  <span class="foot-text">Adelaide, SA · © 2025</span>
+</footer>
 
 <script>
-// Load hero photo dynamically — tries images/photo.jpg
-// If it fails, shows placeholder text instead
+// Hero photo
 const heroBg = document.getElementById('heroBg');
-const img = new Image();
-img.onload = () => {
-  heroBg.style.backgroundImage = `url('images/photo.jpg')`;
-  heroBg.classList.remove('no-photo');
-};
-img.onerror = () => {
-  heroBg.classList.add('no-photo');
-};
-heroBg.classList.add('no-photo'); // start hidden
-img.src = 'images/photo.jpg';
+const pi = new Image();
+pi.onload = () => { heroBg.style.backgroundImage = "url('images/photo.jpg')"; heroBg.classList.remove('no-photo'); };
+pi.onerror = () => heroBg.classList.add('no-photo');
+heroBg.classList.add('no-photo');
+pi.src = 'images/photo.jpg';
 
 // Scroll observer
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-    else entry.target.classList.remove('visible');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+    else e.target.classList.remove('visible');
   });
-}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-up,.fade-in').forEach(el => observer.observe(el));
-</script>
+}, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up,.fade-in').forEach(el => io.observe(el));
 
+// Hamburger
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', () => {
+  const o = mm.classList.toggle('open');
+  hb.classList.toggle('open', o);
+  hb.setAttribute('aria-expanded', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mm.classList.remove('open'); hb.classList.remove('open');
+  hb.setAttribute('aria-expanded','false'); document.body.style.overflow = '';
+}));
+</script>
 </body>
 </html>
