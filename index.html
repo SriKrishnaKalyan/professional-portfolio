@@ -48,7 +48,6 @@ nav{
 .nav-inner{
   display:flex;justify-content:space-between;align-items:center;
   height:clamp(52px,6.5vh,60px);
-  max-width:1100px;margin:0 auto;
 }
 .nav-name{
   font-size:14px;font-weight:600;
@@ -95,7 +94,6 @@ nav{
 .mobile-menu a:last-child{border-bottom:none;color:var(--black);font-weight:600}
 
 /* ── WRAPPER ── */
-.wrap{max-width:1100px;margin:0 auto;padding:0 var(--pad)}
 
 /* ── HERO ── */
 .hero{
@@ -193,9 +191,8 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 .section{
   padding:clamp(3rem,7vh,5.5rem) var(--pad);
   border-top:1px solid var(--border);
-  max-width:1100px;margin:0 auto;
 }
-.section-row{display:grid;grid-template-columns:200px 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.section-row{display:grid;grid-template-columns:clamp(120px,16vw,220px) 1fr;gap:clamp(1.5rem,4vw,5rem);align-items:start}
 .section-label{
   font-size:11px;font-weight:600;letter-spacing:0.12em;
   text-transform:uppercase;color:var(--grey-light);
@@ -206,12 +203,13 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 /* ── ABOUT ── */
 .about-body{font-size:15px;line-height:1.9;color:#333}
 .about-body p+p{margin-top:1rem}
-.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.about-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
 .about-card{background:var(--white);padding:1.1rem 1.25rem}
 .about-card-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);margin-bottom:5px}
 .about-card-val{font-size:13px;color:var(--black);line-height:1.6}
 .about-card-val strong{font-weight:600}
 @media(max-width:500px){.about-cards{grid-template-columns:1fr}}
+@media(max-width:700px){.about-cards{grid-template-columns:1fr}}
 
 /* ── PROJECTS ── */
 .proj{border-top:1px solid var(--border);cursor:pointer}
@@ -229,6 +227,18 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 .proj-kpi-val{font-family:var(--serif);font-size:clamp(15px,2vw,19px);color:var(--accent);line-height:1}
 .proj-kpi-lab{font-size:9px;color:var(--grey-light);text-transform:uppercase;letter-spacing:0.07em;margin-top:2px}
 .proj-toggle{font-size:18px;color:var(--border);width:20px;text-align:center;transition:transform 0.2s,color 0.15s;user-select:none;line-height:1}
+.further-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--grey-light);cursor:pointer;border:none;background:none;
+  padding:1.25rem 0;border-top:1px solid var(--border);
+  width:100%;text-align:left;transition:color 0.15s;
+}
+.further-toggle:hover{color:var(--black)}
+.further-toggle svg{transition:transform 0.25s}
+.further-toggle.open svg{transform:rotate(180deg)}
+.further-projects{display:none}
+.further-projects.open{display:block}
 .proj.open .proj-toggle{transform:rotate(45deg);color:var(--accent)}
 .proj-body{display:none;padding:0 0 1.75rem 3rem}
 .proj.open .proj-body{display:block}
@@ -244,8 +254,8 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
   display:flex;align-items:center;justify-content:center;
   color:var(--border);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
 }
-.proj-desc{font-size:14px;line-height:1.8;color:#444;margin-bottom:1rem;max-width:700px}
-.proj-points{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:1.1rem;max-width:700px}
+.proj-desc{font-size:14px;line-height:1.8;color:#444;margin-bottom:1rem}
+.proj-points{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:1.1rem}
 .proj-points li{font-size:13px;color:#444;padding-left:16px;position:relative;line-height:1.7}
 .proj-points li::before{content:"—";position:absolute;left:0;color:var(--grey-light);font-size:11px;top:3px}
 .proj-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:1rem}
@@ -307,7 +317,7 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
 .skill-tags{display:flex;flex-wrap:wrap;gap:5px}
 
 /* ── CONTACT ── */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(2rem,6vw,6rem);align-items:start}
 .contact-heading{
   font-family:var(--serif);
   font-size:clamp(1.8rem,4vw,3rem);
@@ -315,7 +325,7 @@ hr.section-rule{border:none;border-top:1px solid var(--border);margin:0}
   letter-spacing:-0.02em;margin-bottom:1rem;
 }
 .contact-heading em{font-style:italic;color:var(--accent)}
-.contact-sub{font-size:14px;color:var(--grey);line-height:1.75;margin-bottom:1.5rem;max-width:340px}
+.contact-sub{font-size:14px;color:var(--grey);line-height:1.75;margin-bottom:1.5rem}
 .contact-available{
   font-size:12px;font-weight:600;letter-spacing:0.06em;
   color:var(--grey-light);display:flex;align-items:center;gap:7px;margin-bottom:1.5rem;
@@ -347,7 +357,6 @@ footer{
   border-top:1px solid var(--border);
   display:flex;justify-content:space-between;align-items:center;
   flex-wrap:wrap;gap:8px;
-  max-width:1100px;margin:0 auto;
 }
 .foot-text{font-size:11px;color:var(--grey-light)}
 @media(max-width:600px){footer{justify-content:center;text-align:center}}
@@ -408,9 +417,10 @@ footer{
     </div>
     <h1 class="hero-name fade-up">Sri Krishna<br>Kalyan Bandaru</h1>
     <p class="hero-role fade-up">
-      ML Engineer specialising in computer vision, edge AI, and autonomous systems.<br><br>
-      Five years of progressively harder engineering problems — mechanical systems to embedded AI to full production ML pipelines.
-      Master of AI & ML, University of Adelaide (GPA 6.1) · Master of Mechatronics Engineering, Tor Vergata Rome.
+      Five years of progressively harder engineering problems — mechanical systems to embedded AI to full production ML pipelines.<br><br>
+      Computer vision · Edge AI · Autonomous systems ·
+      Master of AI & ML, University of Adelaide (GPA 6.1) ·
+      Master of Mechatronics Engineering, Tor Vergata Rome ·
       Full working rights (Subclass 485).
     </p>
     <div class="hero-actions fade-up">
@@ -431,8 +441,8 @@ footer{
     <div class="stat-label">On-device accuracy · Neural net deployed to STM32 microcontroller, no cloud</div>
   </div>
   <div class="stat fade-up">
-    <div class="stat-num">0.642</div>
-    <div class="stat-label">mAP50 out of 1.0 · Aerial object detection on VisDrone — a challenging small-object benchmark</div>
+    <div class="stat-num">2</div>
+    <div class="stat-label">Production systems deployed — CV pipeline at Proto Corp and embedded AI on STM32 hardware</div>
   </div>
   <div class="stat fade-up">
     <div class="stat-num">3.5K+</div>
@@ -500,14 +510,14 @@ footer{
               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="proj-img-ph" style="display:none">No image · images/proj-stm32.png</div>
           </div>
-          <p class="proj-desc">Deployed a deep learning food classification model directly to an STM32H747I-DISCO microcontroller. Applied model compression and weight quantisation to meet strict hardware memory limits — no server, no connectivity required.</p>
+          <p class="proj-desc">Deployed a MobileNet-based CNN for food classification directly to an STM32H747I-DISCO microcontroller. Applied model compression and weight quantisation to meet strict flash and RAM constraints — no server, no connectivity required at any point.</p>
           <ul class="proj-points">
             <li>97% accuracy across 18 categories — 81ms inference at 11.2 FPS, fully on-device</li>
             <li>~3× weight compression via STM32CubeMX / X-CUBE-AI to meet MCU flash constraints</li>
             <li>Validated in real-time with onboard B-CAMS-OMV camera — graded 30/30 Cum Laude</li>
           </ul>
           <div class="proj-footer">
-            <div class="proj-tags"><span class="tag">STM32H747I</span><span class="tag">X-CUBE-AI</span><span class="tag">TensorFlow Lite</span><span class="tag">Keras</span><span class="tag">C/C++</span><span class="tag">IAR Workbench</span></div>
+            <div class="proj-tags"><span class="tag">STM32H747I</span><span class="tag">MobileNet CNN</span><span class="tag">X-CUBE-AI</span><span class="tag">TensorFlow Lite</span><span class="tag">Keras</span><span class="tag">C/C++</span><span class="tag">IAR Workbench</span></div>
             <a class="proj-code" href="mailto:srikrishnakalyan5@gmail.com?subject=Code%20Access%20%E2%80%94%20STM32%20Neural%20Network">Request code</a>
           </div>
         </div>
@@ -530,7 +540,7 @@ footer{
               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="proj-img-ph" style="display:none">No image · images/proj-uav.png</div>
           </div>
-          <p class="proj-desc">End-to-end autonomous drone navigation combining EGO-Planner obstacle avoidance with YOLO real-time detection. Built and validated in simulation using ArduPilot SITL and Gazebo before deployment on NVIDIA Jetson hardware.</p>
+          <p class="proj-desc">End-to-end autonomous drone navigation combining EGO-Planner obstacle avoidance with YOLO real-time detection. Built and validated entirely in simulation (ArduPilot SITL + Gazebo) — the system is production-architecture but simulation-validated; real hardware deployment was outside the project scope. All codebase work was done from scratch within the lab's research environment.</p>
           <ul class="proj-points">
             <li>YOLO architecture evaluation on VisDrone aerial dataset — mAP50 of 0.642 for person and vehicle detection</li>
             <li>Replaced default feature tracking with SuperPoint — from 5 features/frame to ~2,000</li>
@@ -574,6 +584,13 @@ footer{
           </div>
         </div>
       </div>
+
+      <!-- FURTHER WORK -->
+      <button class="further-toggle" id="furtherToggle" onclick="toggleFurther()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        Further work — 2 additional projects
+      </button>
+      <div class="further-projects" id="furtherProjects">
 
       <!-- 04 Alzheimer's -->
       <div class="proj fade-up" onclick="this.classList.toggle('open')">
@@ -738,15 +755,19 @@ footer{
           </div>
           <div>
             <div class="skill-cat">ML & Deep Learning</div>
-            <div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow / Keras</span><span class="tag">Scikit-learn</span><span class="tag">Transfer Learning</span><span class="tag">Model Quantisation</span></div>
+            <div class="skill-tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow / Keras</span><span class="tag">Scikit-learn</span><span class="tag">Transfer Learning</span></div>
           </div>
           <div>
             <div class="skill-cat">Deployment & APIs</div>
-            <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">REST APIs</span><span class="tag">CI/CD</span></div>
+            <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">REST APIs</span></div>
           </div>
           <div>
             <div class="skill-cat">Robotics & Edge AI</div>
             <div class="skill-tags"><span class="tag">ROS2 (Humble)</span><span class="tag">Gazebo</span><span class="tag">NVIDIA Jetson</span><span class="tag">STM32</span><span class="tag">ArduPilot SITL</span><span class="tag">MAVROS</span></div>
+          </div>
+          <div>
+            <div class="skill-cat">Collaboration & Workflow</div>
+            <div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">PR-based workflow</span><span class="tag">Confluence</span><span class="tag">Roboflow</span></div>
           </div>
         </div>
       </div>
@@ -763,7 +784,7 @@ footer{
           </div>
           <div>
             <div class="skill-cat">Other ML</div>
-            <div class="skill-tags"><span class="tag">Hugging Face</span><span class="tag">BERT / NLP</span><span class="tag">MLOps</span><span class="tag">Ultralytics</span></div>
+            <div class="skill-tags"><span class="tag">Hugging Face</span><span class="tag">BERT / NLP</span><span class="tag">MLOps</span><span class="tag">Ultralytics</span><span class="tag">Model Quantisation</span><span class="tag">CI/CD</span></div>
           </div>
         </div>
       </div>
@@ -819,6 +840,16 @@ footer{
 </footer>
 
 <script>
+function toggleFurther() {
+  const btn = document.getElementById('furtherToggle');
+  const projects = document.getElementById('furtherProjects');
+  const open = projects.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.querySelector('svg').style.transform = open ? 'rotate(180deg)' : '';
+  // observe new fade elements
+  projects.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+}
+
 // Hero photo
 const heroBg = document.getElementById('heroBg');
 const pi = new Image();
